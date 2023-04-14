@@ -3,6 +3,12 @@
 @section('content')
     
     <div class="grid-layout">
+
+        <div class="btn-create btn btn-primary mb-5">
+            <a href="{{ route('comic.create') }}">
+                create new comic
+            </a>
+        </div>
         
         <table class="table">
             <thead>
