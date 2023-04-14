@@ -2,9 +2,17 @@
 
 @section('content')
     
-    <div class="grid-layout">
+    <div class="">
         
-        deatiled-card here... 
+        <ul>
+            <li>{{ $comic['title'] }}</li>
+        </ul>
+
+        <div>
+            <a href="{{ route('comic.index') }}">
+                Go back to list
+            </a>
+        </div>
 
     </div>
 

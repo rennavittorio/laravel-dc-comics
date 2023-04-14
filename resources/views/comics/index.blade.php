@@ -21,7 +21,7 @@
                 @foreach ($comics as $key=>$comic)
                     <tr>
                         <th scope="row">{{ $key }}</th>
-                        <td><a href="#">{{ $comic->title }}</a></td>
+                        <td><a href="{{ route('comic.show', $comic->id) }}">{{ $comic->title }}</a></td>
                         {{-- <td>{{ $comic->description }}</td> --}}
                         {{-- <td>{{ $comic->thumb }}</td> --}}
                         <td>{{ $comic->price }}</td>
