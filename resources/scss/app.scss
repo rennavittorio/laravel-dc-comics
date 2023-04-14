@@ -2,4 +2,20 @@
 @import './partials/general';
 
 
+.card {
+    max-width: 75%;
+}
 
+// .card .card-text.description {
+//     width: 100%;
+//     overflow: hidden;
+//     white-space: nowrap;
+//     text-overflow: ellipsis;
+// }
+
+.card-img-top {
+    max-width: 100%;
+    aspect-ratio: 16/3;
+    object-fit: cover;
+    object-position: center;
+}
