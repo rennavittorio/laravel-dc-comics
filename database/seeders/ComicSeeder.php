@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comic;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -124,5 +125,19 @@ class ComicSeeder extends Seeder
                 "type" => "graphic novel"
             ],
         ];
+
+        foreach ($comics as $comic) {
+            $c = new Comic();
+
+            $c->title = $comic['title'];
+            $c->description = $comic['description'];
+            $c->thumb = $comic['thumb'];
+            $c->price = $comic['price'];
+            $c->series = $comic['series'];
+            $c->sale_date = $comic['sale_date'];
+            $c->type = $comic['type'];
+
+            $c->save();
+        }
     }
 }
