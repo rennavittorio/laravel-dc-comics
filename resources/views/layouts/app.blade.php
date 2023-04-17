@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body class="body d-flex flex-column justify-content-between">
 
     @include('partials.header')
 
