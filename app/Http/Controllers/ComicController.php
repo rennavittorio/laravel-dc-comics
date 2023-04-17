@@ -102,6 +102,12 @@ class ComicController extends Controller
         return to_route('comics.show', $comic->id);
     }
 
+    public function delete(Comic $comic)
+    {
+
+        return view('comics.delete', compact('comic'));
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -110,6 +116,8 @@ class ComicController extends Controller
      */
     public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+
+        return to_route('comics.index');
     }
 }

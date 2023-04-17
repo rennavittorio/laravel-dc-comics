@@ -22,6 +22,7 @@
                 <th scope="col">sale_date</th>
                 <th scope="col">type</th>
                 <th scope="col">edit</th>
+                <th scope="col">delete</th>
               </tr>
             </thead>
             <tbody>
@@ -39,6 +40,11 @@
                             <a href="{{ route('comics.edit', $comic->id) }}" class="btn btn-warning btn-sm">
                                 edit
                             </a>
+                        </td>
+                        <td>
+                            <a href="{{ route('comics.delete', $comic->id) }}" class="btn btn-danger btn-sm">
+                                delete
+                            </a> 
                         </td>
                     </tr>
                 @endforeach
