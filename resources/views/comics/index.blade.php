@@ -5,7 +5,7 @@
     <div class="grid-layout">
 
         <div class="btn-create btn btn-primary mb-5">
-            <a href="{{ route('comic.create') }}">
+            <a href="{{ route('comics.create') }}">
                 create new comic
             </a>
         </div>
@@ -27,7 +27,7 @@
                 @foreach ($comics as $key=>$comic)
                     <tr>
                         <th scope="row">{{ $key }}</th>
-                        <td><a href="{{ route('comic.show', $comic->id) }}">{{ $comic->title }}</a></td>
+                        <td><a href="{{ route('comics.show', $comic->id) }}">{{ $comic->title }}</a></td>
                         {{-- <td>{{ $comic->description }}</td> --}}
                         {{-- <td>{{ $comic->thumb }}</td> --}}
                         <td>{{ $comic->price }}</td>

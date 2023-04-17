@@ -19,7 +19,7 @@
         </div>
 
         <div class="btn btn-warning mt-3">
-            <a href="{{ route('comic.index') }}">
+            <a href="{{ route('comics.index') }}">
                 Go back to list
             </a>
         </div>

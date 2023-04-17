@@ -49,7 +49,7 @@
     <div class="col-12">
         <button type="submit" class="btn btn-primary">Sign in</button>
         <div class="btn btn-warning">
-            <a href="{{ route('comic.index') }}">
+            <a href="{{ route('comics.index') }}">
                 Go back to list
             </a>
         </div>

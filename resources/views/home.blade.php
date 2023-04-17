@@ -4,7 +4,7 @@
     
     <div class="grid-layout">
         
-        Benvenuto, <a href="{{ route('comic.index') }}">clicca qui per accedere</a> 
+        Benvenuto, <a href="{{ route('comics.index') }}">clicca qui per accedere</a> 
 
     </div>
 
