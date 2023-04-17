@@ -21,6 +21,7 @@
                 <th scope="col">series</th>
                 <th scope="col">sale_date</th>
                 <th scope="col">type</th>
+                <th scope="col">edit</th>
               </tr>
             </thead>
             <tbody>
@@ -34,6 +35,11 @@
                         <td>{{ $comic->series }}</td>
                         <td>{{ $comic->sale_date }}</td>
                         <td>{{ $comic->type }}</td>
+                        <td>
+                            <a href="#" class="btn btn-warning btn-sm">
+                                edit
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
