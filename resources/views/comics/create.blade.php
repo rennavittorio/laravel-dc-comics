@@ -6,7 +6,10 @@
     Insert new comic
 </h1>
     
-<form class="row g-3">
+<form 
+action="{{ route('comics.store') }}" method="POST"
+class="row g-3">
+    @csrf
 
     <div class="col-12">
         <label for="title" class="form-label">Title</label>
@@ -19,8 +22,8 @@
     </div>
 
     <div class="col-12">
-        <label for="src" class="form-label">src</label>
-        <input type="text" class="form-control" id="src" name="src">
+        <label for="thumb" class="form-label">thumb</label>
+        <input type="text" class="form-control" id="thumb" name="thumb">
     </div>
 
     <div class="col-6">
@@ -40,7 +43,7 @@
 
     <div class="col-6">
         <label for="type" class="form-label">type</label>
-        <select class="form-select" aria-label="Default select example" id="type" name="type">
+        <select class="form-select" aria-label="Default select example" id="type" name="type" value="">
             <option selected>Open this select menu</option>
             <option value="comic book">comic book</option>
             <option value="graphic novel">graphic novel</option>
