@@ -16,7 +16,7 @@ class="row g-3">
         <input 
         type="text" 
         class="form-control @error('title') is-invalid @enderror" 
-        id="title" name="title" value="{{ old('title') }}">
+        id="title" name="title" value="{{ old('title')??'' }}">
         {{-- old('title') è una helper func che ci permette di recuperare l'ultimo value --}}
         @error('title')
             <div class="text-danger">{{ $message }}</div>
@@ -26,7 +26,7 @@ class="row g-3">
     <div class="col-12">
         <label for="description" class="form-label">Description</label>
         <textarea class="form-control @error('description') is-invalid @enderror" 
-        id="description" name="description">{{ old('description') }}</textarea>
+        id="description" name="description">{{ old('description')??'' }}</textarea>
         @error('description')
             <div class="text-danger">{{ $message }}</div>
         @enderror
@@ -37,7 +37,7 @@ class="row g-3">
         <input 
         type="text" 
         class="form-control @error('thumb') is-invalid @enderror" 
-        id="thumb" name="thumb" value="{{ old('thumb') }}">
+        id="thumb" name="thumb" value="{{ old('thumb')??'' }}">
         @error('thumb')
             <div class="text-danger">{{ $message }}</div>
         @enderror
@@ -49,7 +49,7 @@ class="row g-3">
         type="number" step="0.01" 
         class="form-control @error('price') is-invalid @enderror" 
         id="price" name="price"
-        value="{{ old('price') }}">
+        value="{{ old('price')??'' }}">
         @error('price')
             <div class="text-danger">{{ $message }}</div>
         @enderror
@@ -61,7 +61,7 @@ class="row g-3">
         type="text" 
         class="form-control @error('series') is-invalid @enderror" 
         id="series" name="series"
-        value="{{ old('series') }}">
+        value="{{ old('series')??'' }}">
         @error('series')
             <div class="text-danger">{{ $message }}</div>
         @enderror
@@ -73,7 +73,7 @@ class="row g-3">
         type="date" 
         class="form-control @error('sale_date') is-invalid @enderror" 
         id="sale_date" name="sale_date"
-        value="{{ old('sale_date') }}">
+        value="{{ old('sale_date')??'' }}">
         @error('sale_date')
             <div class="text-danger">{{ $message }}</div>
         @enderror

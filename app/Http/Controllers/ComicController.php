@@ -52,7 +52,7 @@ class ComicController extends Controller
         $data = $request->validate([
             'title' => 'required|string|max:255|min:4',
             'description' => 'required|string|max:3000|min:10',
-            'thumb' => 'required|string',
+            'thumb' => 'required|string|url',
             'price' => 'required|decimal:2',
             'series' => 'required|string',
             'sale_date' => 'required|date_format:Y-m-d',
@@ -130,7 +130,7 @@ class ComicController extends Controller
         $data = $request->validate([
             'title' => 'required|string|max:255|min:4',
             'description' => 'required|string|max:3000',
-            'thumb' => 'required|string',
+            'thumb' => 'required|string|url',
             'price' => 'required|decimal:2',
             'series' => 'required|string',
             'sale_date' => 'required|date_format:Y-m-d',
