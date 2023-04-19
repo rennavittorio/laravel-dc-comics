@@ -85,8 +85,6 @@ class="row g-3">
         <select class="form-select @error('type') is-invalid @enderror" 
         aria-label="Default select example" id="type" name="type" value="">
             <option>Open this select menu</option>
-            {{-- <option @selected(old('type') == 'comic book') value="comic book">comic book</option>
-            <option @selected(old('type') == 'graphic novel') value="graphic novel">graphic novel</option> --}}
             @foreach($types as $key=>$value)
                 <option @selected(old('type') == $key) value="{{ $key }}"> {{ $value }} </option>
             @endforeach

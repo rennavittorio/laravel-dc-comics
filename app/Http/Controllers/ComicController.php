@@ -67,7 +67,7 @@ class ComicController extends Controller
         //se validazione fail, laravel rimanda a pag prec (create)
         //e salva in sessione gli errori
 
-        //complete version
+        //complete version (same on update)
         // $data = $request->all();
 
         // $new_comic = new Comic();
@@ -140,28 +140,16 @@ class ComicController extends Controller
                     'comic book', 'graphic novel'
                 ])
             ]
-            //Rule::in([]) permette un check di specifiche parole (vedi select)
         ]);
 
-        //metodo completo----------------------------
-        // $data = $request->all();
-
-        // $comic->title = $data['title'];
-        // $comic->description = $data['description'];
-        // $comic->thumb = $data['thumb'];
-        // $comic->price = $data['price'];
-        // $comic->series = $data['series'];
-        // $comic->sale_date = $data['sale_date'];
-        // $comic->type = $data['type'];
-
-        // $comic->save();
+        //metodo completo-----------------
 
         //shortcut 1----------------------
         // $comic->fill($data);
         // $comic->sav();
 
         //shortcut 2----------------------
-        $comic->update($data); //stessa cosa di create
+        $comic->update($data);
 
         return to_route('comics.show', $comic->id);
     }
