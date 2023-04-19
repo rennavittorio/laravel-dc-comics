@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comic;
 use App\Http\Requests\StoreComicRequest;
 use App\Http\Requests\UpdateComicRequest;
+use Illuminate\Validation\Rule; //attenzione qui, di default importa use errato
 
 class ComicController extends Controller
 {
@@ -28,7 +29,13 @@ class ComicController extends Controller
      */
     public function create()
     {
-        return view('comics.create');
+
+        $types = [
+            'comic book' => 'Comic book',
+            'graphic novel' => 'Graphic novel'
+        ];
+
+        return view('comics.create', compact('types'));
     }
 
     /**
@@ -39,19 +46,45 @@ class ComicController extends Controller
      */
     public function store(StoreComicRequest $request)
     {
-        $data = $request->all();
 
-        $new_comic = new Comic();
+        //inizio validazione, mettere in cima al method
+        //una validazione per ogni campo
+        $data = $request->validate([
+            'title' => 'required|string|max:255|min:4',
+            'description' => 'required|string|max:3000|min:10',
+            'thumb' => 'required|string',
+            'price' => 'required|decimal:2',
+            'series' => 'required|string',
+            'sale_date' => 'required|date_format:Y-m-d',
+            'type' => [
+                'required',
+                Rule::in([
+                    'comic book', 'graphic novel'
+                ])
+            ]
+            //Rule::in([]) permette un check di specifiche parole (vedi select)
+        ]);
+        //se validazione fail, laravel rimanda a pag prec (create)
+        //e salva in sessione gli errori
 
-        $new_comic->title = $data['title'];
-        $new_comic->description = $data['description'];
-        $new_comic->thumb = $data['thumb'];
-        $new_comic->price = $data['price'];
-        $new_comic->series = $data['series'];
-        $new_comic->sale_date = $data['sale_date'];
-        $new_comic->type = $data['type'];
+        //complete version
+        // $data = $request->all();
 
-        $new_comic->save();
+        // $new_comic = new Comic();
+
+        // $new_comic->title = $data['title'];
+        // $new_comic->description = $data['description'];
+        // $new_comic->thumb = $data['thumb'];
+        // $new_comic->price = $data['price'];
+        // $new_comic->series = $data['series'];
+        // $new_comic->sale_date = $data['sale_date'];
+        // $new_comic->type = $data['type'];
+
+        // $new_comic->save();
+
+        //shortcut
+        $new_comic = Comic::create($data); //cosi abbiamo errore fillable
+        //lo risolviamo nel Model file
 
         return to_route('comics.show', $new_comic->id);
     }
@@ -75,7 +108,13 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        return view('comics.edit', compact('comic'));
+
+        $types = [
+            'comic book' => 'Comic book',
+            'graphic novel' => 'Graphic novel'
+        ];
+
+        return view('comics.edit', compact('comic', 'types'));
     }
 
     /**
@@ -87,17 +126,42 @@ class ComicController extends Controller
      */
     public function update(UpdateComicRequest $request, Comic $comic)
     {
-        $data = $request->all();
 
-        $comic->title = $data['title'];
-        $comic->description = $data['description'];
-        $comic->thumb = $data['thumb'];
-        $comic->price = $data['price'];
-        $comic->series = $data['series'];
-        $comic->sale_date = $data['sale_date'];
-        $comic->type = $data['type'];
+        $data = $request->validate([
+            'title' => 'required|string|max:255|min:4',
+            'description' => 'required|string|max:3000',
+            'thumb' => 'required|string',
+            'price' => 'required|decimal:2',
+            'series' => 'required|string',
+            'sale_date' => 'required|date_format:Y-m-d',
+            'type' => [
+                'required',
+                Rule::in([
+                    'comic book', 'graphic novel'
+                ])
+            ]
+            //Rule::in([]) permette un check di specifiche parole (vedi select)
+        ]);
 
-        $comic->save();
+        //metodo completo----------------------------
+        // $data = $request->all();
+
+        // $comic->title = $data['title'];
+        // $comic->description = $data['description'];
+        // $comic->thumb = $data['thumb'];
+        // $comic->price = $data['price'];
+        // $comic->series = $data['series'];
+        // $comic->sale_date = $data['sale_date'];
+        // $comic->type = $data['type'];
+
+        // $comic->save();
+
+        //shortcut 1----------------------
+        // $comic->fill($data);
+        // $comic->sav();
+
+        //shortcut 2----------------------
+        $comic->update($data); //stessa cosa di create
 
         return to_route('comics.show', $comic->id);
     }
